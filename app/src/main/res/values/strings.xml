@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Beautiful Weather</string>
+    <string name="city_select">Select City</string>
+    <string name="add_city">Add</string>
+    <string name="remove_city">-</string>
+
+</resources>
