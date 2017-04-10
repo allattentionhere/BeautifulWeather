@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module(includes = NetworkModule.class)
 public class SkeletonServiceModule {
 
-    private static final String BASE_URL = "https://api.github.com/";
+    private static final String BASE_URL = "http://api.openweathermap.org/";
 
     @Provides
     @SkeletonApplicationScope

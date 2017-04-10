@@ -1,21 +1,21 @@
 package com.allattentionhere.beautifulweather.network;
 
 
+import com.allattentionhere.beautifulweather.model.WeatherResult;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface SkeletonServiceAPI {
 
-  @GET("users/{username}/repos")
-  Call<List<String>> getReposForUser(@Path("username") String username);
+    @GET("data/2.5/weather")
+    Call<WeatherResult> getCityWeather(
+            @Query("q") String q,
+            @Query("appid") String appid
+    );
 
-  @GET("repositories")
-  Call<List<String>> getAllRepos();
-
-  @GET("users/{username}")
-  Call<String> getUser(@Path("username") String username);
 }

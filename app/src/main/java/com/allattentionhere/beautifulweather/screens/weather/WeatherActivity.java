@@ -4,9 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.allattentionhere.beautifulweather.R;
+import com.allattentionhere.beautifulweather.SkeletonApplication;
+import com.allattentionhere.beautifulweather.model.WeatherResult;
+import com.allattentionhere.beautifulweather.network.SkeletonServiceAPI;
 import com.allattentionhere.beautifulweather.util.ActivityUtils;
 
 import javax.inject.Inject;
+
+import retrofit2.Call;
 
 /**
  * Created by krupenghetiya on 01/02/17.
@@ -14,7 +19,10 @@ import javax.inject.Inject;
 
 public class WeatherActivity extends AppCompatActivity {
 
+    @Inject
+    SkeletonServiceAPI skeletonServiceAPI;
 
+    Call<WeatherResult> weatherCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +42,12 @@ public class WeatherActivity extends AppCompatActivity {
         // Create the presenter
         DaggerWeatherComponent.builder()
                 .weatherPresenterModule(new WeatherPresenterModule(weatherFragment))
-//                .skeletonApplicationComponent(SkeletonApplication.get(WeatherActivity.this).component())
+                .skeletonApplicationComponent(SkeletonApplication.get(WeatherActivity.this).component())
                 .build().inject(this);
 
+        weatherCall = skeletonServiceAPI.getCityWeather("",);
+
     }
-
-
-
 
 
 }
